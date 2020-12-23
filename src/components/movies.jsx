@@ -1,55 +1,85 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { getMovies } from "../services/fakeMovieService";
+import Like from "../common/like";
+import Pagination from "../common/pagination";
 
 class Movies extends Component {
-    state = { 
-        movies: getMovies(),
-     }
-    render() { 
-        
-        const {length : count} = this.state.movies;
+  state = {
+    movies: getMovies(),
+    pageSize: 10,
+  };
 
+  handleDelete = (movie) => {
+    const movies = this.state.movies.filter((m) => m._id != movie._id);
+    this.setState({ movies });
+  };
 
-        if(count == 0)
-        {
-            return <p>There are no moviews in the store.</p>
-        }
+  handleLike = (movie) => {
+    const movies = [...this.state.movies];
+    const index = movies.indexOf(movie);
+    movies[index] = { ...movies[index] };
+    movies[index].liked = !movies[index].liked;
+    this.setState({ movies });
+  };
 
+  handlePageChange = (page) => {
+    console.log(page);
+  };
 
-        return (
-            <React.Fragment>
-            <p>Totla number of movies : {count}</p>
-           <table className="table table-striped">
-               <thead>
-                   <tr>
-                       <th>Title</th>
-                       <th>Genre</th>
-                       <th>Stock</th>
-                       <th>Rate</th>
-                       <th></th>
-                   </tr>
-               </thead>
-               <tbody>
-                   {this.state.movies.map(movie =>
-                   <tr key={movie._id}>
-                       <td>{movie.title}</td>
-                       <td>{movie.gener.name}</td>
-                       <td>{movie.numberInStock}</td>
-                       <td>{movie.dailyRentalRate}</td>
-                       <td><button onClick={() => this.handleDelete(movie)}  className="btn btn-danger btn-sm">Delete</button></td>
-                   </tr>)}
-                   
-               </tbody>
-           </table> 
-           </React.Fragment>
-         );
+  render() {
+    const { length: count } = this.state.movies;
+
+    if (count == 0) {
+      return <p>There are no moviews in the store.</p>;
     }
 
-    handleDelete = (movie) => {
-        const movies = this.state.movies.filter(m => m._id != movie._id)
-        this.setState({movies});
-    }
-
+    return (
+      <React.Fragment>
+        <p>Totla number of movies : {count}</p>
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Genre</th>
+              <th>Stock</th>
+              <th>Rate</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.movies.map((movie) => (
+              <tr key={movie._id}>
+                <td>{movie.title}</td>
+                <td>{movie.gener.name}</td>
+                <td>{movie.numberInStock}</td>
+                <td>{movie.dailyRentalRate}</td>
+                <td>
+                  <Like
+                    liked={movie.liked}
+                    onClick={() => this.handleLike(movie)}
+                  />
+                </td>
+                <td>
+                  <button
+                    onClick={() => this.handleDelete(movie)}
+                    className="btn btn-danger btn-sm"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <Pagination
+          itemsCount={count}
+          pageSize={this.state.pageSize}
+          onPageChange={this.handlePageChange}
+        />
+      </React.Fragment>
+    );
+  }
 }
- 
+
 export default Movies;
