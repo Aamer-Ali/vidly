@@ -1,4 +1,4 @@
-import * as generAPI from "./fakeGenreService";
+// import * as generAPI from "./fakeGenreService";
 
 const movies = [
   {
@@ -48,7 +48,7 @@ const movies = [
   {
     _id: "5b21ca3eeb7fbfbcc471e",
     title: "Gone Girl",
-    gener: { _id: "5b21ca3eeb7fbfbcc47182", name: "Thriller" },
+    gener: { _id: "5b21ca3eeb7fbfbcc47120", name: "Thriller" },
     numberInStock: 7,
     dailyRentalRate: 4.5,
   },
@@ -73,5 +73,5 @@ export function getMovies() {
 }
 
 export function getMovie(id) {
-  return movies.find((m) => m._id == id);
+  return movies.find((m) => m._id === id);
 }
