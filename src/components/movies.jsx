@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { getMovies } from "../services/fakeMovieService";
 import { getGenres } from "../services/fakeGenreService";
-import ListGroup from "../common/listGroup";
-import Pagination from "../common/pagination";
+import ListGroup from "./common/listGroup";
+import Pagination from "./common/pagination";
 import { paginate } from "../utils/paginate";
 import MoviesTable from "./moviesTable";
+import { Redirect, Route} from "react-router-dom";
 import _ from "lodash";
 
 class Movies extends Component {
@@ -80,6 +81,7 @@ class Movies extends Component {
 
     return (
       <React.Fragment>
+    
         <div className="row">
           <div className="col-2">
             <ListGroup

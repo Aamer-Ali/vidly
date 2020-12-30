@@ -33,7 +33,7 @@ const movies = [
   },
   {
     _id: "5b21ca3eeb7fbfbcc47181a",
-    title: "Airplane",
+    title: "Airplane 101",
     genre: { _id: "5b21ca3eeb7fbfbcc471814", name: "Comedy" },
     numberInStock: 7,
     dailyRentalRate: 3.5,
