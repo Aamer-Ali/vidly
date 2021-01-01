@@ -15,7 +15,7 @@ const Input = ({ name, label, value, type, error, onChange }) => {
         className="form-control "
         aria-describedby="emailHelp"
       />
-      {error && <div className="alert alert-danger">{error}</div>}
+      {error && <div className="form-error-message">{error}</div>}
     </div>
   );
 };

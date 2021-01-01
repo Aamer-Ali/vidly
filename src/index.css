@@ -29,3 +29,8 @@ code {
 .input-label {
   font-size: smaller;
 }
+
+.form-error-message {
+  font-size: 10px;
+  color: red;
+}
