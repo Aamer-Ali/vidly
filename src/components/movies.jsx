@@ -5,7 +5,7 @@ import ListGroup from "./common/listGroup";
 import Pagination from "./common/pagination";
 import { paginate } from "../utils/paginate";
 import MoviesTable from "./moviesTable";
-import { Redirect, Route} from "react-router-dom";
+// import { Redirect, Route} from "react-router-dom";
 import _ from "lodash";
 
 class Movies extends Component {
@@ -81,7 +81,6 @@ class Movies extends Component {
 
     return (
       <React.Fragment>
-    
         <div className="row">
           <div className="col-2">
             <ListGroup

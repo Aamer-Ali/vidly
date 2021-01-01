@@ -1,7 +1,7 @@
 import "./App.css";
 import Movies from "./components/movies";
 
-import { Component } from "react";
+// import { Component } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import Cutomers from "./components/cutomers";
 import Rentals from "./components/rentals";
