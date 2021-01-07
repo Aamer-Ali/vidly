@@ -7,6 +7,7 @@ import { paginate } from "../utils/paginate";
 import MoviesTable from "./moviesTable";
 // import { Redirect, Route} from "react-router-dom";
 import _ from "lodash";
+import { Link } from "react-router-dom";
 
 class Movies extends Component {
   state = {
@@ -90,7 +91,13 @@ class Movies extends Component {
             />
           </div>
           <div className="col">
-            <p>Totla number of movies : {totalCount}</p>
+            <Link to="/movies/new" className="btn btn-primary">
+              New Movie
+            </Link>
+            <br />
+            <br />
+            {/* <p>Totla number of movies : {totalCount}</p> */}
+
             <MoviesTable
               movies={movies}
               sortColumn={sortColumn}
